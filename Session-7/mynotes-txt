@@ -1,0 +1,37 @@
+client-server model
+
+the programs are running inside a computer, mobile, phone or a device that can execute a code.
+we have many programs in both devices
+
+both devices are connected by a network called internet. inside internet there are many computers connected to each other and they are divided in groups called networks.
+network interface.
+IP address refers to the interface. one computer can have more than one interface. The network interface have one ....
+
+it does not matter where you connect something, the important is.....
+
+My phone IP address at URJC is: 10.3.52.195
+
+My computer lab IP is: 212.128.253.97
+
+To ask if the computer is there you have to put: ping 8.8.8.8 and to stop it you press ctrl+c
+
+*ping time to 8.8.8.8:
+time = 3.63 ms
+
+*ping time to my computer:
+time = 0.54  ms
+
+*ping time to a computer in the same network:
+time = 0.493 ms
+
+*ping time to my mobile phone
+time = 3.07
+
+*ping time to www.google.es:
+184.168.27.39
+
+*ping to urjc.es:
+192.168.162.16
+
+
+
