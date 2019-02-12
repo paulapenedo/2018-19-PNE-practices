@@ -17,7 +17,7 @@ while True:
     #Connect to the server
     s.connect((IP, PORT))
 
-    s.send(str.encode("HELLO FROM MY CLIENT")) #convert a string in a
+    s.send(str.encode(chat)) #convert a string in a
 
     msg = s.recv(2048).decode("utf-8")
     print("MESSAGE FROM THE SERVER")
