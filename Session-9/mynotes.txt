@@ -1,0 +1,5 @@
+Client-server model session-9
+
+the server have a server socket of some size, in which attend something for the client, with an IP and a port.
+also the server has a client socket
+
