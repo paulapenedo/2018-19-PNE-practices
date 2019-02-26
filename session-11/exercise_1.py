@@ -3,7 +3,7 @@ import termcolor
 
 # Change this IP to yours!!!!!
 IP = "212.128.253.101"
-PORT = 8088
+PORT = 8080
 MAX_OPEN_REQUESTS = 5
 
 
@@ -19,15 +19,19 @@ def process_client(cs):
     print("Request message: ")
     termcolor.cprint(msg, 'green')
 
-    content = open("index.html", "r")
+    filename = 'index.html'
+    with open(filename, 'r') as file:
+        content = file.read()
+        file.close()
+
 
     status_line = "HTTP/1.1 200 ok\r\n"
 
     header = "Content-Type: text/html\r\n"
-    header += "Content-Lenght: {}\r\n".format(len(str.encode(str(content))))
+    header += "Content-Lenght: {}\r\n".format(len(str.encode(content)))
 
     # \r\n is the blank line
-    response_msg = status_line + header + "\r\n" + str(content)
+    response_msg = status_line + header + "\r\n" + content
 
     cs.send(str.encode(response_msg))
 
