@@ -1,21 +1,28 @@
-#Example of reading a file located in our local filesystem
+# Example of reading a file located in our local filesystem
 
-NAME = "mynotes.txt"
+FILENAME = "mynotes.txt"
 
 #open the file
-myfile = open(NAME, 'r')
+f = open(NAME, 'r')
 
-print("File opened:  {}".format(myfile.name))
-
-contents = myfile.read()
-
-print("The file contents are: {}".format(contents))
-
-myfile.close()
+# read the contents of the file
+contents = f.read()
 
 
-f = open(NAME, 'a')
-f.write("THIS IS A TEXT EXAMLE FOR ADDING TO MY FILE")
+print("File opened:  {}".format(f.name))
+print("{}".format(contents))
+
+# close the file
+f.close()
+
+
+# now open the file again for adding
+f = open(FILENAME, "a")
+
+# write some information to the file
+f.write("THIS IS A TEXT EXAMPLE FOR ADDING TO MY FILE")
+
+# close the file again
 f.close()
 
 print("The end")
