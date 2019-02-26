@@ -1,0 +1,40 @@
+http messages
+
+two types: request and response
+
+request messages
+-header with a request line a the request headers
+-blank line
+-body, optional
+
+response messages
+-header woth status line and reques headers
+-blank line
+-body, optional
+
+
+HTML
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>tab</title>
+
+    <head>
+    <body style="backgroung-color: yellow">
+        <h1>Green Server</h1>
+        <p>This is a program<p>
+
+
+    <body>
+
+
+
+
+<html>
+
+-always an opening tag and a close tag
+- the head is optional
+-the thing between h1 is the big message yo are going to see in the screen
+
