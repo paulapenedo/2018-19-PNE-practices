@@ -1,8 +1,6 @@
-#Programming our first client
-
 import socket
 
-#Create a socket for communicating woth the server
+# Create a socket for communicating with the server
 while True:
     chat = input("What do you want to send? ")
     if chat == "end":
@@ -14,10 +12,10 @@ while True:
     PORT = 8080
     IP = "212.128.253.64"
 
-    #Connect to the server
+    # Connect to the server
     s.connect((IP, PORT))
 
-    s.send(str.encode(chat)) #convert a string in a
+    s.send(str.encode(chat))
 
     msg = s.recv(2048).decode("utf-8")
     print("MESSAGE FROM THE SERVER")
