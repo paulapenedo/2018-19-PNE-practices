@@ -1,0 +1,5 @@
+Select the session-13 folder. Right-click on it and chose the Open in terminal entry
+From that terminal execute the following command:
+
+python -m http.server 8000
+and click in the link
