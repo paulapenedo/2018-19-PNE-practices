@@ -1,11 +1,15 @@
 import socket
 
-PORT = 8080
-IP = "212.128.253.64"
+# server IP and PORT
+PORT = 8086
+IP = "192.168.1.36"
 
-#create the socket
+# create the socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+# establish the connection to the server
 s.connect((IP, PORT))
 
+# close the socket
 s.close()
+
