@@ -4,20 +4,29 @@ import socket
 IP = "192.168.1.36"
 PORT = 8086
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# establish the connection to the Server (IP, PORT)
-s.connect((IP, PORT))
+while True:
+    #the client is blocking the server....NOT A GOOD DECISION!!!!
+    msg = input("> ")
 
-msg = "Hello"
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Send the request message to the server
-s.send(str.encode(msg))
+    # establish the connection to the Server (IP, PORT)
+    s.connect((IP, PORT))
 
-# Receive the servers response
-response = s.recv(2048).decode()
 
-# Print the server's response
-print("Response: {}".format(response))
+    #it is better to ask before connect
+    #msg = input("> ")
 
-s.close()
+    # Send the request message to the server
+    s.send(str.encode(msg))
+
+    # Receive the servers response
+    response = s.recv(2048).decode()
+
+    # Print the server's response
+    print("Response: {}".format(response))
+
+    s.close()
+
+
