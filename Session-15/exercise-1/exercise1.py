@@ -13,17 +13,33 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
 
-
         if self.path == "/":
-            with open("echo.html", "r") as f:
+            with open("form_ex1.html", "r") as f:
                 contents = f.read()
+        elif "echo?msg=" in self.path:
+            data = self.path.split('=')[1].split('+')
+            contents = '''
+                    <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <title>FORM 1</title>
+                            </head>
+                            <body>
+                                <h1>Echo from the message received</h1>
+                    <p>''' + " ".join(data) + '''</p>
+                                <a href= "/">Main Page</a>
+                            
+                            </body>
+                            </html>
+            '''
         else:
             with open("error.html", "r") as f:
                 contents = f.read()
 
         # Open the form1.html file
-        f = open("form_ex1.html", 'r')
-        contents = f.read()
+        #f = open("form_ex1.html", 'r')
+        #contents = f.read()
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!
