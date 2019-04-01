@@ -51,3 +51,24 @@ print("User: {}".format(login))
 print("Name: {}".format(name))
 print("Repos: {}".format(nrepos))
 print("Bio: \n{}".format(bio))
+
+
+conn = http.client.HTTPSConnection(HOSTNAME)
+conn.request(METHOD, ENDPOINT + GITHUB_ID + "/repos", None, headers)
+r1 = conn.getresponse()
+
+text_json = r1.read().decode("utf_8")
+conn.close()
+
+repos = json.loads(text_json)
+for repo in repos:
+    print(repo['name'])
+
+ENDPOINT = "/repos/" + GITHUB_ID + "/2018-19-PNE-practices/commits"
+conn = http.client.HTTPSConnection(HOSTNAME)
+conn.request(METHOD, ENDPOINT, None, headers)
+r1 = conn.getresponse()
+text_json = r1.read().decode("utf-8")
+conn.close()
+response = json.loads(text_json)
+print("Total commits:", len(response))
