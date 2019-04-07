@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Practice 6</h1>
+    <form action="/seq" method="get">
+        Chain to proceed: <input type="text" name="msg"></br>
+        Calculate length: <input type="checkbox" name="lenCheck"></br>
+        Operations: <select name="operation">
+            <option value="c">Count</option>
+            <option value="p">Percentage</option>
+        </select>
+        <br>
+        <div>
+            Base :
+            <input type="radio" name="base" value="A" checked>A</input>
+            <input type="radio" name="base" value="C">C</input>
+            <input type="radio" name="base" value="G">G</input>
+            <input type="radio" name="base" value="T">T</input>
+        </div>
+        <br>
+        <input type = "submit" value="Execute">
+    </form>
+</body>
+</html>
