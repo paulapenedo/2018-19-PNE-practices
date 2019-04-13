@@ -31,7 +31,7 @@ class Seq:
     def perc(self, base):
         l = self.len()
         c = self.count(base)
-        return c * 100.0 / l, 1
+        return c * 100.0 / l
 
     def __str__(self):
         return self.strbases
