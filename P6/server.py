@@ -1,7 +1,7 @@
 import http.server
 import socketserver
 import termcolor
-from P7.Seq import Seq
+from P6.Seq import Seq
 
 
 # Define the Server's port
@@ -16,30 +16,12 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 return False
         return True
 
-    def treat(self, seq, comand):
-        print("Making comand", comand)
-        if comand == "len":
-            return seq.length()
-        elif comand == "complement":
-            return seq.complement().get_strbase()
-        elif comand == "reverse":
-            return seq.reverse().get_strbase()
-        elif comand == "countA":
-            return seq.count('A')
-        elif comand == "countT":
-            return seq.count('T')
-        elif comand == "countG":
-            return seq.count("G")
-        elif comand == "countC":
-            return seq.count("C")
-        elif comand == "percA":
-            return seq.perc("A")
-        elif comand == "percT":
-            return seq.perc("T")
-        elif comand == "percG":
-            return seq.perc("G")
-        elif comand == "percC":
-            return seq.perc("C")
+    def process_command(self, seq, command, base):
+        print("Making comand", command)
+        if command == "c":
+            return str(seq.count(base))
+        elif command == "p":
+            return str(seq.perc(base)) + "%"
         else:
             return "ERROR"
 
@@ -55,7 +37,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = f.read()
             f.close()
         elif '/seq' in self.path:
-            """<!DOCTYPE html>
+            contents = """<!DOCTYPE html>
                         <html lang ="en">
                         <head>
                             <meta charset="UTF-8">
@@ -65,7 +47,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
             request = self.path.split('=')[1]
             pieces = request.split("&")
-            chain = pieces[0]
+            chain = pieces[0].upper()
             contents = contents + "<p>Sequence: " + chain + "</p>"
 
             if self.validSequence(chain):
@@ -77,9 +59,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = contents + "<p>Operation: " + operation + "</p>"
                 base = self.path.split('base=')[1].split("&")[0]
                 contents = contents + "<p>Base: " + base + "</p>"
-                comand = operation + base
-                answer = self.treat(seq, comand)
-                contents = contents + "<p>Answer: " + str(answer) + "</p>"
+                answer = self.process_command(seq, operation, base)
+                contents = contents + "<p>Result: " + str(answer) + "</p>"
             else:
                 contents = contents + "<p>No Valid</p>"
 
